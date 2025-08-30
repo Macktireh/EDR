@@ -1,0 +1,119 @@
+{% load i18n static %}
+
+<c-layouts>
+  <c-slot name="title"> {% translate 'Fast & Easy Train Travel' %} </c-slot>
+  <main
+    class="h-full w-full mx-auto p-1 max-w-3xl flex flex-col justify-center items-center flex-1 flex-grow"
+  >
+    <section class="container pt-4">
+      <c-components.timeline
+        :items="[
+          {'name': 'Reservation', 'active': True},
+          {'name': 'Payments', 'active': True},
+          {'name': 'Confirmation', 'active': True}
+        ]"
+      />
+    </section>
+
+    <h2 class="pb-6 text-xl font-bold">
+      {% translate 'Summary of your booking' %}
+    </h2>
+
+    <form method="post" class="w-full flex flex-col gap-6">
+      {% csrf_token %}
+
+      <!-- 🚆 Billet Aller -->
+      <c-components.card-ticket
+        title="🎟️ {% translate 'Departure Ticket' %}"
+        departure_city="{{ data.departure_city }}"
+        arrival_city="{{ data.arrival_city }}"
+        departure_date="{{ data.departure_date }}"
+        luggage="{{ luggage.get_category_display }}"
+        extra_fee="{{ luggage.extra_fee|floatformat:0 }}"
+      />
+
+      <!-- 🚆 Billet Retour (si round trip) -->
+      {% if data.ticket_type == 'round_trip' and data.return_date %}
+      <c-components.card-ticket
+        title="🎟️ {% translate 'Return Ticket' %}"
+        departure_city="{{ data.arrival_city }}"
+        arrival_city="{{ data.departure_city }}"
+        departure_date="{{ data.return_date }}"
+        luggage="{{ luggage.get_category_display }}"
+        extra_fee="{{ luggage.extra_fee|floatformat:0 }}"
+      />
+      {% endif %}
+
+      <div class="card shadow-lg bg-base-100">
+        <div class="card-body">
+          <h3 class="card-title text-lg font-bold text-primary">
+            👤 {% translate 'Passenger Information' %}
+          </h3>
+
+          <!-- Nom -->
+          <div class="flex flex-col gap-2 bg-base-200 p-4 rounded-xl">
+            <p class="text-xs text-gray-500">{% translate 'Full name' %}</p>
+            <p class="text-lg font-semibold">{{ data.name }}</p>
+          </div>
+
+          <!-- Email -->
+          <div class="flex flex-col gap-2 bg-base-200 p-4 rounded-xl mt-2">
+            <p class="text-xs text-gray-500">{% translate 'Email address' %}</p>
+            <p class="text-lg">{{ data.email }}</p>
+          </div>
+
+          <!-- Phone number -->
+          <div class="flex flex-col gap-2 bg-base-200 p-4 rounded-xl mt-2">
+            <p class="text-xs text-gray-500">{% translate 'Phone number' %}</p>
+            <p class="text-lg">
+              {{ data.country_code }} {{ data.phone_number }}
+            </p>
+          </div>
+
+          <!-- Date de naissance -->
+          <div class="flex flex-col gap-2 bg-base-200 p-4 rounded-xl mt-2">
+            <p class="text-xs text-gray-500">{% translate 'Date of birth' %}</p>
+            <p class="text-lg">{{ data.birth_date }}</p>
+          </div>
+
+          <!-- Identity document -->
+          <div class="flex flex-col gap-2 bg-base-200 p-4 rounded-xl mt-2">
+            <p class="text-xs text-gray-500">
+              {% translate 'Identity document' %}
+            </p>
+            <p class="text-lg">{{ data.file_name }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 💰 Montant total + paiement -->
+      <div class="card shadow-lg bg-base-100 border border-base-200 mb-2">
+        <div class="card-body text-center">
+          <h3 class="text-lg font-bold text-primary">
+            💰 {% translate "Payment Summary" %}
+          </h3>
+          <div class="mt-4">
+            <p class="text-3xl font-extrabold text-success">
+              {{ data.total_amount|floatformat:0 }} DJF
+            </p>
+            <p class="italic font-semibold mt-2">
+              {% translate "Payment method:" %} {{ data.payment_method|title }}
+            </p>
+          </div>
+          <div class="divider my-4"></div>
+          <div class="flex justify-center gap-4">
+            <a
+              href="{% url 'reservation:payment_method' %}"
+              class="btn btn-ghost"
+            >
+              {% translate "Back" %}
+            </a>
+            <button type="submit" class="btn btn-primary">
+              {% translate "Confirm Reservation" %}
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </main>
+</c-layouts>

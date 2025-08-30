@@ -1,0 +1,50 @@
+{% load i18n static %}
+
+<c-layouts>
+  <c-slot name="title"> {% translate 'Fast & Easy Train Travel' %} </c-slot>
+  <main
+    class="h-full w-full mx-auto p-1 max-w-2xl flex flex-col justify-center items-center flex-1 flex-grow"
+  >
+    <section class="container pt-4">
+      <c-components.timeline
+        :items="[{'name': 'Reservation', 'active': True}, {'name': 'Payments', 'active': True}, {'name': 'Confirmation', 'active': False}]"
+      />
+    </section>
+    <form
+      method="post"
+      class="container p-4 pt-1"
+    >
+      {% csrf_token %}
+      <section class="container p-4">
+        <h2 class="pb-4">{% translate 'How would you like to pay?' %}</h2>
+        <ul
+          class="w-full grid grid-cols-[repeat(auto-fill,minmax(230px,1fr))] gap-2 text-xs"
+        >
+          {% for value, label in form.fields.payment_method.choices %}
+            <li class="relative">
+              <c-components.payment-option
+                id="{{ form.payment_method.id_for_label }}_{{ forloop.counter0 }}"
+                value="{{ value }}"
+                label="{{ label }}"
+              >
+                <input
+                  id="{{ form.payment_method.id_for_label }}_{{ forloop.counter0 }}"
+                  type="radio"
+                  name="{{ form.payment_method.name }}"
+                  class="radio radio-primary/20 peer absolute top-1/2 left-4 -translate-y-1/2"
+                  value="{{ value }}"
+                />
+              </c-components.payment-option>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+      <div class="w-full flex justify-between items-center gap-4 p-2 my-10">
+        <a href="{% url 'reservation:form' %}" class="btn btn-ghost">{% translate 'Back' %}</a>
+        <button type="submit" class="btn btn-primary">
+          {% translate 'Next' %}
+        </button>
+      </div>
+    </form>
+  </main>
+</c-layouts>

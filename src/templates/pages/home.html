@@ -1,0 +1,142 @@
+{% load i18n static %}
+
+<c-layouts>
+  <c-slot name="title"> {% translate 'Fast & Easy Train Travel' %} </c-slot>
+  <main class="h-full flex-1 flex-grow">
+    <section class="flex flex-col mt-4 h-90">
+      <c-components.home-carousel />
+    </section>
+
+    <section
+      class="mt-10 px-6 w-[95%] max-w-6xl bg-primary/50 mx-auto text-primary-content rounded-2xl py-12"
+    >
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-2xl font-bold text-center mb-4">
+          {% translate 'Book Your Train Journey' %}
+        </h2>
+        <p class="text-lg mb-4 opacity-90">
+          {% translate 'Travel comfortably between Djibouti and Ethiopia' %}
+        </p>
+
+        <!-- Barre de recherche avec autocomplétion -->
+        <c-components.searchbar />
+      </div>
+    </section>
+
+    <!-- Destinations -->
+    <section class="mt-16 px-6 max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold text-center mb-10">
+        {% translate 'Our destinations' %}
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <img
+              src="{% static 'assets/djibouti.jpg' %}"
+              alt="Dire Dawa"
+              class="w-full h-40 object-cover"
+            />
+          </figure>
+          <div class="card-body items-center">
+            <h3 class="card-title">{% translate 'Djibouti ↔ Dire Dawa' %}</h3>
+            <p>
+              {% translate 'From' %} <span class="font-bold">3200 DJF</span>
+            </p>
+          </div>
+        </div>
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <img
+              src="{% static 'assets/addis.jpeg' %}"
+              alt="Addis Abeba"
+              class="w-full h-40 object-cover"
+            />
+          </figure>
+          <div class="card-body items-center">
+            <h3 class="card-title">{% translate 'Djibouti ↔ Addis Ababa' %}</h3>
+            <p>
+              {% translate 'From' %} <span class="font-bold">8000 DJF</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="mt-16 px-6 max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold text-center mb-10">
+        {% translate 'How does it work?' %}
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div class="p-6 bg-base-100 shadow-lg rounded-2xl">
+          <span class="text-4xl">🎯</span>
+          <h3 class="text-lg font-semibold mt-4">
+            {% translate '1. Choose your route' %}
+          </h3>
+          <p class="text-base-content/60">
+            {% translate 'Djibouti, Dire Dawa or Addis Ababa, departing on
+            even/odd days.' %}
+          </p>
+        </div>
+        <div class="p-6 bg-base-100 shadow-lg rounded-2xl">
+          <span class="text-4xl">💳</span>
+          <h3 class="text-lg font-semibold mt-4">
+            {% translate '2. Pay easily' %}
+          </h3>
+          <p class="text-base-content/60">
+            {% translate 'Online (Waafi, Boa Pay...) or in cash at the station.' %}
+          </p>
+        </div>
+        <div class="p-6 bg-base-100 shadow-lg rounded-2xl">
+          <span class="text-4xl">🎟️</span>
+          <h3 class="text-lg font-semibold mt-4">
+            {% translate '3. Receive your ticket' %}
+          </h3>
+          <p class="text-base-content/60">
+            {% translate 'Ticket sent by e-mail or collected at the station.' %}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advantages -->
+    <section
+      class="mt-16 px-6 max-w-6xl mx-auto text-primary-content rounded-2xl py-12"
+    >
+      <h2 class="text-2xl font-bold text-center mb-10">
+        {% translate 'Why choose EDR?' %}
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div class="shadow-lg rounded-2xl p-8">
+          <span class="text-4xl">⚡</span>
+          <h3 class="mt-2 font-semibold">{% translate 'Fast & Simple' %}</h3>
+          <p>{% translate 'Booking in less than 2 minutes.' %}</p>
+        </div>
+        <div class="shadow-lg rounded-2xl p-8">
+          <span class="text-4xl">💼</span>
+          <h3 class="mt-2 font-semibold">{% translate 'Luggage included' %}</h3>
+          <p>{% translate '10 kg free with every ticket.' %}</p>
+        </div>
+        <div class="shadow-lg rounded-2xl p-8">
+          <span class="text-4xl">📧</span>
+          <h3 class="mt-2 font-semibold">{% translate 'Ticket by e-mail' %}</h3>
+          <p>{% translate 'No need to print, just show your smartphone.' %}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to action -->
+    <section class="mt-16 px-6 max-w-4xl mx-auto text-center py-12">
+      <h2 class="text-2xl font-bold mb-6">
+        {% translate 'Ready to travel with us?' %}
+      </h2>
+      <p class="mb-6 text-base-content/60">
+        {% translate 'Book your ticket now for Djibouti, Dire Dawa or Addis
+        Ababa and enjoy a comfortable journey.' %}
+      </p>
+      <a href="{% url 'reservation:form' %}" class="btn btn-lg btn-primary">
+        {% translate 'Book now' %}
+      </a>
+    </section>
+  </main>
+</c-layouts>

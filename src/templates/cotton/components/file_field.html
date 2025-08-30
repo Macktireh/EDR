@@ -1,0 +1,14 @@
+{% load i18n %}
+
+<fieldset class="fieldset w-full p-2 mt-2 border-1 border-base-300 rounded-xl {% if errors %}border-1 border-error{% endif %}">
+  <legend class="fieldset-legend pl-2">
+    {{ legend }}
+  </legend>
+  {{ slot }}
+  <label class="label text-xs pl-2">{{ help_text }}</label>
+</fieldset>
+{% if errors %}
+  <span class="label text-error text-xs text-left pl-2 mb-2">
+    {{ errors }}
+  </span>
+{% endif %}

@@ -1,0 +1,140 @@
+{% load i18n static %}
+
+<div class="max-w-3xl w-[90%] mx-auto">
+  <div class="card shadow-3xl p-2">
+    <form
+      method="GET"
+      action="{% url 'reservation:destination_search' %}"
+      class="flex justify-center items-center w-full"
+    >
+      <label class="input rounded-l-full flex-1 h-12">
+        <input
+          id="destination-search"
+          type="search"
+          name="q"
+          class="grow pl-2"
+          placeholder="{% translate 'Search destination (Djibouti, Dire Dawa, Addis Ababa...)' %}"
+          autocomplete="off"
+          hx-get="{% url 'reservation:destination_search' %}"
+          hx-trigger="keyup delay:100ms changed"
+          hx-target="#autocomplete-dropdown"
+        />
+        <kbd class="kbd kbd-sm">⌘</kbd>
+        <kbd class="kbd kbd-sm">K</kbd>
+        <div
+          id="autocomplete-container"
+          class="absolute top-full left-0 w-full bg-base-100 border border-base-300 rounded-xl shadow-2xl mt-2 z-50 hidden"
+        >
+          <ul id="autocomplete-dropdown" class="menu p-2 w-full"></ul>
+        </div>
+      </label>
+      <button class="btn btn-primary rounded-r-full w-18 h-12">
+        <svg
+          class="size-5"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <g
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            stroke-width="2.5"
+            fill="none"
+            stroke="currentColor"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </g>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("destination-search");
+    const dropdown = document.getElementById("autocomplete-container");
+    const dropdownList = document.getElementById("autocomplete-dropdown");
+
+    // Raccourci CTRL+K pour focus et scroll vers la barre de recherche
+    document.addEventListener("keydown", function (e) {
+      // CTRL+K ou CMD+K (pour Mac)
+      if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+        e.preventDefault();
+
+        // Scroll smooth vers la barre de recherche
+        searchInput.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+
+        // Focus sur l'input après un petit délai pour laisser le scroll se terminer
+        setTimeout(() => {
+          searchInput.focus();
+          searchInput.select(); // Sélectionne tout le texte existant
+        }, 100);
+      }
+    });
+
+    // Afficher le dropdown quand l'input reçoit le focus et qu'il y a du contenu
+    searchInput.addEventListener("focus", function () {
+      if (this.value.trim().length >= 1 && dropdownList.children.length > 0) {
+        dropdown.classList.remove("hidden");
+      }
+    });
+
+    // Cacher le dropdown quand l'input perd le focus (avec délai pour permettre les clics)
+    searchInput.addEventListener("blur", function () {
+      setTimeout(() => {
+        dropdown.classList.add("hidden");
+      }, 200);
+    });
+
+    // Observer les changements dans le dropdown pour l'afficher/cacher
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.type === "childList") {
+          const hasResults = dropdownList.children.length > 0;
+          const inputHasFocus = document.activeElement === searchInput;
+          const inputHasValue = searchInput.value.trim().length >= 1;
+
+          if (hasResults && inputHasFocus && inputHasValue) {
+            dropdown.classList.remove("hidden");
+          } else {
+            dropdown.classList.add("hidden");
+          }
+        }
+      });
+    });
+
+    observer.observe(dropdownList, { childList: true });
+
+    // Gérer la sélection avec les flèches et Entrée
+    searchInput.addEventListener("keydown", function (e) {
+      const items = dropdown.querySelectorAll("li a");
+      let currentIndex = Array.from(items).findIndex((item) =>
+        item.classList.contains("active")
+      );
+
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (currentIndex < items.length - 1) {
+          if (currentIndex >= 0) items[currentIndex].classList.remove("active");
+          items[currentIndex + 1].classList.add("active");
+        }
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (currentIndex > 0) {
+          items[currentIndex].classList.remove("active");
+          items[currentIndex - 1].classList.add("active");
+        }
+      } else if (e.key === "Enter" && currentIndex >= 0) {
+        e.preventDefault();
+        items[currentIndex].click();
+      } else if (e.key === "Escape") {
+        dropdown.classList.add("hidden");
+        searchInput.blur();
+      }
+    });
+  });
+</script>

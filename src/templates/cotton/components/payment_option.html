@@ -1,0 +1,16 @@
+{% load static %}
+
+{{ slot }}
+<label
+  for="{{ id }}"
+  class="flex flex-col items-center justify-center gap-2 pl-18 bg-base-200/70 hover:bg-primary/5 p-4 rounded-2xl cursor-pointer border-1 border-transparent peer-checked:bg-primary/20 peer-checked:border-primary/70 hover:peer-checked:bg-primary/20"
+>
+  <div class="w-full flex flex-row items-center justify-start gap-4">
+    <img
+      src="{% static 'assets/payments/'|add:value|add:'.png' %}"
+      alt="{{ label }}"
+      class="size-12 object-cover rounded-lg"
+    />
+    <span class="text-lg">{{ label }}</span>
+  </div>
+</label>

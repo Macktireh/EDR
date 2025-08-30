@@ -1,0 +1,15 @@
+{% load i18n %}
+
+{% translate "Hello" %} {{ reservation.name }},
+
+{% translate "Thank you for your reservation with" %} EDR 🚆.  
+{% translate "Your reservation has been received and the reservation notice" %} 
+({% translate "No." %} {{ reservation_notice.notice_number }}) 
+{% translate "is attached to this email." %}
+
+⚠️ {% translate "Please note that you must complete the payment within 3 hours, otherwise your reservation will be automatically cancelled." %}
+
+{% translate "If you did not make this reservation, please ignore this message." %}
+
+{% translate "Best regards" %},  
+{% translate "The EDR Team" %}

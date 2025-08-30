@@ -1,0 +1,39 @@
+{% load custom_filter %}
+
+<c-vars 
+  :items="[{'name': 'Reservation', 'active': True}, {'name': 'Payments', 'active': False}, {'name': 'Confirmation', 'active': False}]" 
+/>
+
+<ul class="timeline w-full grid grid-cols-3">
+  {% for item in items %}
+    <li>
+      {% if not forloop.first %}
+        {% with index=forloop.counter %}
+          {% lookup2 items index as n_item %}
+          <hr class="{% if n_item.active or item.active %}bg-primary{% endif %}" />
+        {% endwith %}
+      {% endif %}
+      <div class="timeline-start timeline-box">{{ item.name }}</div>
+      <div class="timeline-middle">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          class="{% if item.active %}text-primary{% endif %} h-5 w-5"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </div>
+      {% if not forloop.last %}
+        {% with index=forloop.counter %}
+          {% lookup2 items index as n_item %}
+          <hr class="{% if n_item.active %}bg-primary{% endif %}" />
+        {% endwith %}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

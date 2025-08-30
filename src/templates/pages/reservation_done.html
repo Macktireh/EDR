@@ -1,0 +1,21 @@
+{% load i18n static %}
+
+<c-layouts>
+  <c-slot name="title"> {% translate 'Fast & Easy Train Travel' %} </c-slot>
+  <main
+    class="h-full w-full mx-auto p-1 max-w-3xl flex flex-col justify-center items-center flex-1 flex-grow"
+  >
+    <h2 class="pb-6 text-xl font-bold">
+      {% translate "Thank you for your reservation with" %} <strong>EDR</strong> 🚆.
+    </h2>
+
+    <p>
+      {% translate "Your reservation has been received and the reservation notice" %} 
+      ({% translate "No." %} {{ reservation_notice.notice_number }}) 
+    </p>
+
+    <p>
+      ⚠️ {% translate "Please note that you must complete the payment within 3 hours, otherwise your reservation will be automatically cancelled." %}
+    </p>
+  </main>
+</c-layouts>

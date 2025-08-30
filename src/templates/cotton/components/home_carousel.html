@@ -1,0 +1,255 @@
+{% load i18n static %}
+
+<div class="w-full h-full flex flex-col items-center justify-center relative">
+  <div class="carousel w-[95%] relative group rounded-2xl" id="myCarousel">
+    <div id="slide1" class="carousel-item relative w-full">
+      <img
+        src="{% static 'assets/carousel/1.jpeg' %}"
+        class="w-full object-cover"
+      />
+      <div
+        class="absolute inset-0 flex flex-col items-center justify-center bg-black/30 backdrop-blur-xs p-4"
+      >
+        <h2 class="text-2xl font-bold text-center text-white">
+          {% translate 'Your Next Adventure Awaits' %}
+        </h2>
+        <p class="text-lg text-center text-white mt-2">
+          {% translate 'Experience fast and easy train travel with us.' %}
+        </p>
+        <a
+          href="{% url 'reservation:form' %}"
+          class="link bg-primary no-underline p-4 py-1 mt-4 rounded-full"
+          >{% translate "Book now" %}</a
+        >
+      </div>
+      <div
+        class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 justify-between"
+      >
+        <button
+          class="btn btn-circle btn-xs sm:btn-sm bg-base-200/20 hover:bg-base-200/30 border-transparent text-base-content/30 prev"
+        >
+          ❮
+        </button>
+        <button
+          class="btn btn-circle btn-xs sm:btn-sm bg-base-200/20 hover:bg-base-200/30 border-transparent text-base-content/30 next"
+        >
+          ❯
+        </button>
+      </div>
+    </div>
+    <div id="slide2" class="carousel-item relative w-full">
+      <img
+        src="{% static 'assets/carousel/2.jpeg' %}"
+        class="w-full object-cover"
+      />
+      <div
+        class="absolute inset-0 flex flex-col items-center justify-center bg-black/30 backdrop-blur-xs p-4"
+      >
+        <h2 class="text-2xl font-bold text-center text-white">
+          {% translate 'Book Your Tickets, Hassle-Free' %}
+        </h2>
+        <p class="text-lg text-center text-white mt-2">
+          {% translate 'Find the best routes and prices for your journey to Dire
+          Dawa and Addis Ababa.' %}
+        </p>
+        <a
+          href="{% url 'reservation:form' %}"
+          class="link bg-primary no-underline p-4 py-1 mt-4 rounded-full"
+          >{% translate "Book now" %}</a
+        >
+      </div>
+      <div
+        class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 justify-between"
+      >
+        <button
+          class="btn btn-circle btn-xs sm:btn-sm bg-base-200/20 hover:bg-base-200/30 border-transparent text-base-content/30 prev"
+        >
+          ❮
+        </button>
+        <button
+          class="btn btn-circle btn-xs sm:btn-sm bg-base-200/20 hover:bg-base-200/30 border-transparent text-base-content/30 next"
+        >
+          ❯
+        </button>
+      </div>
+    </div>
+    <div id="slide3" class="carousel-item relative w-full">
+      <img
+        src="{% static 'assets/carousel/3.jpeg' %}"
+        class="w-full object-cover"
+      />
+      <div
+        class="absolute inset-0 flex flex-col items-center justify-center bg-black/30 backdrop-blur-xs p-4"
+      >
+        <h2 class="text-2xl font-bold text-center text-white">
+          {% translate 'Convenient Payments' %}
+        </h2>
+        <p class="text-lg text-center text-white mt-2">
+          {% translate 'Pay in cash at the station or use our secure online
+          payment options like Waafi and Saba Pay.' %}
+        </p>
+        <a
+          href="{% url 'reservation:form' %}"
+          class="link bg-primary no-underline p-4 py-1 mt-4 rounded-full"
+          >{% translate "Book now" %}</a
+        >
+      </div>
+      <div
+        class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 justify-between"
+      >
+        <button
+          class="btn btn-circle btn-xs sm:btn-sm bg-base-200/20 hover:bg-base-200/30 border-transparent text-base-content/30 prev"
+        >
+          ❮
+        </button>
+        <button
+          class="btn btn-circle btn-xs sm:btn-sm bg-base-200/20 hover:bg-base-200/30 border-transparent text-base-content/30 next"
+        >
+          ❯
+        </button>
+      </div>
+    </div>
+    <div id="slide4" class="carousel-item relative w-full">
+      <img
+        src="{% static 'assets/carousel/5.jpeg' %}"
+        class="w-full object-cover"
+      />
+      <div
+        class="absolute inset-0 flex flex-col items-center justify-center bg-black/30 backdrop-blur-xs p-4"
+      >
+        <h2 class="text-2xl font-bold text-center text-white">
+          {% translate 'Travel Your Way' %}
+        </h2>
+        <p class="text-lg text-center text-white mt-2">
+          {% translate 'Choose between one-way or round-trip tickets and select
+          your preferred baggage allowance.' %}
+        </p>
+        <a
+          href="{% url 'reservation:form' %}"
+          class="link bg-primary no-underline p-4 py-1 mt-4 rounded-full"
+          >{% translate "Book now" %}</a
+        >
+      </div>
+      <div
+        class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 justify-between"
+      >
+        <button
+          class="btn btn-circle btn-xs sm:btn-sm bg-base-200/20 hover:bg-base-200/30 border-transparent text-base-content/30 prev"
+        >
+          ❮
+        </button>
+        <button
+          class="btn btn-circle btn-xs sm:btn-sm bg-base-200/20 hover:bg-base-200/30 border-transparent text-base-content/30 next"
+        >
+          ❯
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="flex w-full justify-center gap-2 py-2 absolute bottom-2"
+    id="indicators"
+  >
+    <button
+      class="btn btn-xs size-2 text-base-content/60 border-none rounded-full p-2.5"
+    >
+      1
+    </button>
+    <button
+      class="btn btn-xs size-2 text-base-content/60 border-none rounded-full p-2.5"
+    >
+      2
+    </button>
+    <button
+      class="btn btn-xs size-2 text-base-content/60 border-none rounded-full p-2.5"
+    >
+      3
+    </button>
+    <button
+      class="btn btn-xs size-2 text-base-content/60 border-none rounded-full p-2.5"
+    >
+      4
+    </button>
+  </div>
+</div>
+
+<script>
+  const carousel = document.getElementById("myCarousel");
+  const slides = carousel.querySelectorAll(".carousel-item");
+  const indicators = document.querySelectorAll("#indicators button");
+  let current = 0;
+  let intervals = [];
+
+  function showSlide(index) {
+    // Remplacer scrollIntoView par un scroll horizontal simple
+    carousel.scrollLeft = index * carousel.offsetWidth;
+
+    // Mettre à jour les indicateurs
+    indicators.forEach((btn, i) => {
+      btn.classList.remove("btn-primary", "bg-primary/60");
+      btn.classList.add(
+        "btn-ghost",
+        "hover:bg-base-200/50",
+        "border-transparent"
+      );
+    });
+
+    indicators[index].classList.remove(
+      "btn-ghost",
+      "hover:bg-base-200/50",
+      "border-transparent"
+    );
+    indicators[index].classList.add("btn-primary", "bg-primary/60");
+
+    current = index;
+  }
+
+  function showNextSlide() {
+    showSlide((current + 1) % slides.length);
+  }
+
+  function showPrevSlide() {
+    showSlide((current - 1 + slides.length) % slides.length);
+  }
+
+  function startAutoPlay() {
+    const interval = setInterval(showNextSlide, 5000);
+    intervals.push(interval);
+  }
+
+  function stopAutoPlay() {
+    intervals.forEach((i) => clearInterval(i));
+    intervals = [];
+  }
+
+  // Événements boutons navigation
+  carousel.querySelectorAll(".next").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      stopAutoPlay();
+      showNextSlide();
+    });
+  });
+
+  carousel.querySelectorAll(".prev").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      stopAutoPlay();
+      showPrevSlide();
+    });
+  });
+
+  // Événements indicateurs
+  indicators.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      stopAutoPlay();
+      showSlide(i);
+    });
+  });
+
+  // Pause/reprise au survol
+  carousel.addEventListener("mouseenter", stopAutoPlay);
+  carousel.addEventListener("mouseleave", startAutoPlay);
+
+  // Initialisation
+  showSlide(0);
+  startAutoPlay();
+</script>

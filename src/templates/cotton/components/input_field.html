@@ -1,0 +1,22 @@
+<div class="w-full flex flex-col flex-wrap">
+  <label class="input input-ghost bg-base-200/70 w-full hover:bg-base-content/3 h-12 {{ class }} {% if errors %}border-error input-error{% endif %}">
+    {{ label }} :
+    {% if slot %}
+      {{ slot}}
+    {% else %}
+      <input
+        type="{{ type|default:'text' }}"
+        class="grow"
+        placeholder="{{ placeholder }}"
+        name="{{ name }}"
+        value="{{ value }}"
+        {% if required %}required{% endif %}
+      />
+    {% endif %}
+  </label>
+  {% if errors %}
+    <span class="label text-error text-xs text-left pl-2 mb-2">
+      {{ errors }}
+    </span>
+  {% endif %}
+</div>

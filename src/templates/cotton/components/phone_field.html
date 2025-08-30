@@ -1,0 +1,14 @@
+{% load i18n %}
+
+<label
+  class="input input-ghost bg-base-200/70 w-full hover:bg-base-content/3 h-12 {% if errors %}border-error input-error{% endif %}"
+>
+  {{ label }} :
+  {{ country_code_field }}
+  {{ slot }}
+</label>
+{% if errors %}
+  <span class="label text-error text-xs text-left pl-2 mb-2">
+    {{ errors }}
+  </span>
+{% endif %}

@@ -1,0 +1,26 @@
+{% load i18n static %}
+
+<c-layouts>
+  <c-slot name="title"> {% translate 'Fast & Easy Train Travel' %} </c-slot>
+  <main
+    class="h-full w-full mx-auto p-1 max-w-2xl flex flex-col justify-center items-center flex-1 flex-grow"
+  >
+    <section class="container pt-4">
+      <c-components.timeline />
+    </section>
+    <form
+      method="post"
+      enctype="multipart/form-data"
+      class="container p-4 pt-1"
+    >
+      {% csrf_token %}
+      <c-partials.travel-form />
+      <div class="w-full flex justify-between items-center gap-4 p-2 my-10">
+        <button disabled class="btn btn-ghost">{% translate 'Back' %}</button>
+        <button type="submit" class="btn btn-primary">
+          {% translate 'Next' %}
+        </button>
+      </div>
+    </form>
+  </main>
+</c-layouts>

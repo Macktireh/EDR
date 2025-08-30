@@ -1,0 +1,17 @@
+{
+  "name": "edr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./src/static/css/input.css -o ./src/static/css/output.css --watch --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.12",
+    "daisyui": "^5.0.50",
+    "tailwindcss": "^4.1.12"
+  }
+}

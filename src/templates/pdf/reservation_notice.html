@@ -1,0 +1,154 @@
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% translate "Reservation Notice" %}</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        background: #fff;
+      }
+
+      .container {
+        width: 90%;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 22px;
+        color: #2563eb;
+      }
+
+      .header p {
+        margin: 4px 0;
+        font-size: 13px;
+        color: #555;
+      }
+
+      .info-box {
+        margin-bottom: 20px;
+        border: 1px solid #eee;
+        padding: 12px;
+        border-radius: 8px;
+        background: #f9fafb;
+      }
+
+      .info-title {
+        font-weight: bold;
+        color: #111;
+        margin: 6px 0;
+        font-size: 14px;
+      }
+
+      .info-item {
+        margin: 2px 0;
+      }
+
+      .amount {
+        font-size: 20px;
+        font-weight: bold;
+        color: #16a34a;
+      }
+
+      .payment {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .footer {
+        text-align: center;
+        font-size: 12px;
+        margin-top: 30px;
+        color: #666;
+      }
+
+      .footer strong {
+        color: #111;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <h1>{% translate "Reservation Notice" %}</h1>
+        <p>
+          {% translate "Notice Number" %}: {{ reservation_notice.notice_number }}
+        </p>
+        <p>
+          {% translate "Date" %}: {% now "d F Y H:i:s" %}
+        </p>
+      </div>
+
+      <!-- Reservation Info -->
+      <div class="info-box">
+        <h3 class="info-title">{% translate "Reservation Details" %}</h3>
+        <p class="info-item">
+          {% translate "From" %}:
+          <strong>{{ reservation.departure_city }}</strong>
+        </p>
+        <p class="info-item">
+          {% translate "To" %}: <strong>{{ reservation.arrival_city }}</strong>
+        </p>
+        <p class="info-item">
+          {% translate "Departure Date" %}: {{ reservation.departure_date }}
+        </p>
+        {% if reservation.return_date %}
+        <p class="info-item">
+          {% translate "Return Date" %}: {{ reservation.return_date }}
+        </p>
+        {% endif %}
+      </div>
+
+      <!-- Passenger Info -->
+      <div class="info-box">
+        <h3 class="info-title">{% translate "Passenger Information" %}</h3>
+        <p class="info-item">
+          👤 {{ reservation.name }}
+        </p>
+        <p class="info-item">
+          📧 {% translate 'Email:' %} {{ reservation.email }}
+        </p>
+        <p class="info-item">
+          📱 {% translate 'Téléphne:' %} {{ reservation.phone_number }}
+        </p>
+      </div>
+
+      <!-- Payment Info -->
+      <div class="info-box payment">
+        <h3 class="info-title">{% translate "Amount payable" %}</h3>
+        <p class="info-item">
+          {% translate "Payment Method" %}: {{ reservation.payment.get_method_display }}
+        </p>
+        <p class="info-item amount">{{ reservation.total_amount }} DJF</p>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          {% translate "Please present this notice along with an ID when boarding." %}
+        </p>
+        <p>
+          <strong>{% translate "Thank you for your reservation!" %}</strong>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+{% load i18n %}
+
+<!-- 1. Departure & Arrival Locations -->
+<div class="w-full flex flex-col justify-center p-1 gap-[2px]">
+  <c-components.input-field 
+    label="{{ form.departure_city.label }}"
+    class="rounded-t-2xl"
+    errors="{{ form.departure_city.errors }}"
+  >
+    {{ form.departure_city }}
+  </c-components.input-field>
+  <c-components.input-field 
+    label="{{ form.arrival_city.label }}" 
+    class="rounded-b-2xl"
+    errors="{{ form.arrival_city.errors }}"
+  >
+    {{ form.arrival_city }}
+  </c-components.input-field>
+</div>
+
+<!-- 2. Travel Dates -->
+<div class="w-full flex flex-col justify-center p-1 gap-[2px]">
+  <!-- class="max-sm:rounded-t-2xl min-sm:rounded-l-2xl" -->
+  <c-components.input-field 
+    label="{{ form.departure_date.label }}" 
+    class="rounded-t-2xl"
+    errors="{{ form.departure_date.errors }}"
+  >
+    {{ form.departure_date }}
+  </c-components.input-field>
+  <!-- class="max-sm:rounded-b-2xl min-sm:rounded-r-2xl" -->
+  <c-components.input-field 
+    label="{{ form.return_date.label }}" 
+    class="rounded-b-2xl"
+    errors="{{ form.return_date.errors }}"
+  >
+    {{ form.return_date }}
+  </c-components.input-field>
+</div>
+
+<!-- 3. Infoamtion passenger -->
+<div class="w-full flex flex-col justify-center p-1 gap-[2px] mt-4">
+  <div class="w-full text-left px-2 mb-2">
+    <span>{% translate "Who's travelling?" %}</span>
+  </div>
+  <c-components.input-field 
+    label="{{ form.name.label }}" 
+    class="rounded-t-2xl" 
+    errors="{{ form.name.errors }}"
+  >
+    {{ form.name }}
+  </c-components.input-field>
+  <c-components.input-field 
+    label="{{ form.email.label }}" 
+    errors="{{ form.email.errors }}"
+  >
+    {{ form.email }}
+  </c-components.input-field>
+  <c-components.phone-field 
+    label="{{ form.phone_number.label }}" 
+    country_code_field="{{ form.country_code }}"
+    errors="{{ form.phone_number.errors }}"
+  >
+    {{ form.phone_number }}
+  </c-components.phone-field>
+  <c-components.input-field 
+    label="{{ form.birth_date.label }}" 
+    class="rounded-b-2xl"
+    errors="{{ form.birth_date.errors }}"
+  >
+    {{ form.birth_date }}
+  </c-components.input-field>
+  <c-components.file-field 
+    legend="{{ form.identity_document.field.widget.attrs.placeholder }}"
+    help_text="{{ form.identity_document.help_text }}"
+    errors="{{ form.identity_document.errors }}"
+  >
+    {{ form.identity_document }}
+  </c-components.input-field>
+</div>
+
+<!-- Option Luggages -->
+<div class="w-full flex flex-col justify-center items-center p-1 gap-[2px] mt-4">
+  <div class="w-full text-left px-2 mb-2">
+    <span>{% translate "Luggages" %}</span>
+  </div>
+  <ul class="grid w-full gap-2 grid-cols-[repeat(auto-fill,minmax(150px,1fr))] text-xs">
+    {% for luggage in form.luggages %}
+      <li>
+        <c-components.luggage-option
+          label="{{ luggage.get_category_display }}"
+          extra_fee="{{ luggage.extra_fee|floatformat:0 }}"
+        >
+          <input
+            id="id_luggage_{{ forloop.counter0 }}"
+            type="radio"
+            name="{{ form.luggage.name }}"
+            class="radio radio-error hidden peer"
+            value="{{ luggage.category }}"
+            {% if form.luggage.value == luggage.category %}checked{% endif %}
+          />
+        </c-components.luggage-option>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

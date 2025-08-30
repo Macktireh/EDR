@@ -1,0 +1,47 @@
+{% load i18n static %}
+
+<div class="navbar bg-base-100/60 backdrop-blur-lg w-full sticky top-0 z-2">
+  <div class="flex-none lg:hidden">
+    <label
+      for="my-drawer-3"
+      aria-label="open sidebar"
+      class="btn btn-square btn-ghost"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        class="inline-block h-6 w-6 stroke-current"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+    </label>
+  </div>
+  <div class="mx-2 flex-1 px-2">
+    <a href="{% url 'pages:home' %}" class="btn btn-ghost text-xl">
+      <img src="{% static 'assets/logo.jpg' %}" atl="Logo EDR" class="h-full" />
+    </a>
+  </div>
+  <div class="hidden flex-none lg:block">
+    <ul class="menu menu-horizontal px-1 gap-2">
+      <li>
+        <a
+          href="{% url 'reservation:form' %}"
+          class="link bg-primary no-underline"
+          >{% translate "Book now" %}</a
+        >
+      </li>
+      <li>
+        <a href="#" class="link no-underline">{% translate "My trips" %}</a>
+      </li>
+      <li>
+        <a href="#" class="link no-underline">{% translate "Log in" %}</a>
+      </li>
+    </ul>
+  </div>
+</div>
