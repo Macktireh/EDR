@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-27 02:31+0200\n"
+"POT-Creation-Date: 2025-08-30 22:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: .\src\apps\accounts\admin.py:45
 msgid "Personal info"
 msgstr ""
@@ -59,6 +60,7 @@ msgstr ""
 
 #: .\src\apps\accounts\models.py:15 .\src\apps\reservations\forms.py:101
 #: .\src\apps\reservations\models.py:27
+#: .\src\templates\pages\confirm_reservation.html:55
 msgid "Full name"
 msgstr ""
 
@@ -147,9 +149,9 @@ msgstr ""
 msgid "Canceled"
 msgstr ""
 
-#: .\src\apps\payments\models.py:33 .\src\apps\payments\models.py:57
-#: .\src\apps\payments\models.py:83 .\src\apps\payments\models.py:110
-#: .\src\apps\reservations\models.py:88 .\src\apps\reservations\models.py:144
+#: .\src\apps\payments\models.py:33 .\src\apps\payments\models.py:56
+#: .\src\apps\payments\models.py:82 .\src\apps\payments\models.py:108
+#: .\src\apps\reservations\models.py:90 .\src\apps\reservations\models.py:146
 msgid "Reservation"
 msgstr ""
 
@@ -161,76 +163,72 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: .\src\apps\payments\models.py:44 .\src\apps\payments\models.py:91
-msgid "Amount"
-msgstr ""
-
-#: .\src\apps\payments\models.py:48
+#: .\src\apps\payments\models.py:47
 msgid "Payment"
 msgstr ""
 
-#: .\src\apps\payments\models.py:49
+#: .\src\apps\payments\models.py:48
 msgid "Payments"
 msgstr ""
 
-#: .\src\apps\payments\models.py:60
+#: .\src\apps\payments\models.py:59
 msgid "Reservation notice number"
 msgstr ""
 
-#: .\src\apps\payments\models.py:66 .\src\apps\payments\models.py:93
-#: .\src\apps\payments\models.py:121
+#: .\src\apps\payments\models.py:65 .\src\apps\payments\models.py:91
+#: .\src\apps\payments\models.py:119
 msgid "HTML String"
 msgstr ""
 
-#: .\src\apps\payments\models.py:67
+#: .\src\apps\payments\models.py:66
 msgid "HTML content of the reservation notice"
 msgstr ""
 
-#: .\src\apps\payments\models.py:74
+#: .\src\apps\payments\models.py:73
 msgid "Reservation notice"
 msgstr ""
 
-#: .\src\apps\payments\models.py:75
+#: .\src\apps\payments\models.py:74
 msgid "Reservation notices"
 msgstr ""
 
-#: .\src\apps\payments\models.py:86
+#: .\src\apps\payments\models.py:85
 msgid "invoice number"
 msgstr ""
 
-#: .\src\apps\payments\models.py:94
+#: .\src\apps\payments\models.py:92
 msgid "HTML content of the invoice"
 msgstr ""
 
-#: .\src\apps\payments\models.py:101
+#: .\src\apps\payments\models.py:99
 msgid "Invoice"
 msgstr ""
 
-#: .\src\apps\payments\models.py:102
+#: .\src\apps\payments\models.py:100
 msgid "Invoices"
 msgstr ""
 
-#: .\src\apps\payments\models.py:113
+#: .\src\apps\payments\models.py:111
 msgid "ticket number"
 msgstr ""
 
-#: .\src\apps\payments\models.py:118
+#: .\src\apps\payments\models.py:116
 msgid "Issued at"
 msgstr ""
 
-#: .\src\apps\payments\models.py:119
+#: .\src\apps\payments\models.py:117
 msgid "active"
 msgstr ""
 
-#: .\src\apps\payments\models.py:122
+#: .\src\apps\payments\models.py:120
 msgid "HTML content of the ticket"
 msgstr ""
 
-#: .\src\apps\payments\models.py:129
+#: .\src\apps\payments\models.py:127
 msgid "Ticket"
 msgstr ""
 
-#: .\src\apps\payments\models.py:130
+#: .\src\apps\payments\models.py:128
 msgid "Tickets"
 msgstr ""
 
@@ -267,7 +265,7 @@ msgid " You may choose instead: "
 msgstr ""
 
 #: .\src\apps\reservations\forms.py:73 .\src\apps\reservations\models.py:48
-#: .\src\apps\reservations\models.py:133
+#: .\src\apps\reservations\models.py:135
 msgid "Departure city"
 msgstr ""
 
@@ -276,7 +274,7 @@ msgid "Please enter the departure city."
 msgstr ""
 
 #: .\src\apps\reservations\forms.py:79 .\src\apps\reservations\models.py:54
-#: .\src\apps\reservations\models.py:139
+#: .\src\apps\reservations\models.py:141
 msgid "Arrival city"
 msgstr ""
 
@@ -284,7 +282,8 @@ msgstr ""
 msgid "Please enter the arrival city."
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:85 .\src\apps\reservations\models.py:142
+#: .\src\apps\reservations\forms.py:85 .\src\apps\reservations\models.py:144
+#: .\src\templates\cotton\components\card_ticket.html:20
 msgid "Departure date"
 msgstr ""
 
@@ -300,83 +299,94 @@ msgstr ""
 msgid "Please provide your full name."
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:107
-msgid "Email"
+#: .\src\apps\reservations\forms.py:104
+msgid "e.g.: Ali Ahmed"
 msgstr ""
 
 #: .\src\apps\reservations\forms.py:109
+msgid "Email"
+msgstr ""
+
+#: .\src\apps\reservations\forms.py:111
 msgid "Please provide your email address."
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:119
+#: .\src\apps\reservations\forms.py:115
+msgid "e.g.: ali.ahmed@example.com"
+msgstr ""
+
+#: .\src\apps\reservations\forms.py:123
 msgid "Country code"
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:120
+#: .\src\apps\reservations\forms.py:124
 msgid "Please select your country code."
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:125
+#: .\src\apps\reservations\forms.py:129
+#: .\src\templates\pages\confirm_reservation.html:67
 msgid "Phone number"
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:126
+#: .\src\apps\reservations\forms.py:130
 msgid "Please provide your phone number."
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:128
+#: .\src\apps\reservations\forms.py:132
 msgid "e.g.: 77999999"
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:134 .\src\apps\reservations\models.py:30
+#: .\src\apps\reservations\forms.py:138 .\src\apps\reservations\models.py:30
+#: .\src\templates\pages\confirm_reservation.html:75
 msgid "Date of birth"
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:139 .\src\apps\reservations\models.py:32
+#: .\src\apps\reservations\forms.py:143 .\src\apps\reservations\models.py:32
+#: .\src\templates\pages\confirm_reservation.html:82
 msgid "Identity document"
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:140
+#: .\src\apps\reservations\forms.py:144
 msgid "Max size 2MB. Accepted formats: PDF, PNG, JPG."
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:152
+#: .\src\apps\reservations\forms.py:156
 msgid "Please attach your identity document (passport or identity card)."
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:160
+#: .\src\apps\reservations\forms.py:164
 msgid "Please select your luggage weight category."
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:172
+#: .\src\apps\reservations\forms.py:176
 #, python-format
 msgid "The departure city '%(city)s' is not available in our destinations."
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:183
+#: .\src\apps\reservations\forms.py:187
 #, python-format
 msgid "The arrival city '%(city)s' is not available in our destinations."
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:187
+#: .\src\apps\reservations\forms.py:191
 msgid "Arrival city cannot be the same as departure city."
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:196
+#: .\src\apps\reservations\forms.py:200
 msgid "Departure date cannot be in the past."
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:203
+#: .\src\apps\reservations\forms.py:207
 msgid ""
 "Reservations must be made at least 6 hours before departure (train leaves at "
 "9 AM)."
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:218
+#: .\src\apps\reservations\forms.py:222
 msgid "Return date must be after the departure date."
 msgstr ""
 
-#: .\src\apps\reservations\forms.py:227
+#: .\src\apps\reservations\forms.py:231
 msgid "Please select your payment method."
 msgstr ""
 
@@ -405,7 +415,6 @@ msgid "Passengers"
 msgstr ""
 
 #: .\src\apps\reservations\models.py:57 .\src\apps\reservations\models.py:61
-#: .\src\apps\reservations\models.py:84
 msgid "Price"
 msgstr ""
 
@@ -425,53 +434,70 @@ msgstr ""
 msgid "Ticket type"
 msgstr ""
 
-#: .\src\apps\reservations\models.py:89
+#: .\src\apps\reservations\models.py:85
+msgid "Total amount"
+msgstr ""
+
+#: .\src\apps\reservations\models.py:91
 msgid "Reservations"
 msgstr ""
 
-#: .\src\apps\reservations\models.py:99
+#: .\src\apps\reservations\models.py:101
 msgid "0 to 10 kg (inclusive)"
 msgstr ""
 
-#: .\src\apps\reservations\models.py:100
+#: .\src\apps\reservations\models.py:102
 msgid "11 to 20 kg"
 msgstr ""
 
-#: .\src\apps\reservations\models.py:101
+#: .\src\apps\reservations\models.py:103
 msgid "21 to 30 kg"
 msgstr ""
 
-#: .\src\apps\reservations\models.py:102
+#: .\src\apps\reservations\models.py:104
 msgid "31 to 40 kg"
 msgstr ""
 
-#: .\src\apps\reservations\models.py:103
+#: .\src\apps\reservations\models.py:105
 msgid "+40 kg"
 msgstr ""
 
-#: .\src\apps\reservations\models.py:106
+#: .\src\apps\reservations\models.py:108
 msgid "Category"
 msgstr ""
 
-#: .\src\apps\reservations\models.py:112
+#: .\src\apps\reservations\models.py:114
 msgid "Extra fee"
 msgstr ""
 
-#: .\src\apps\reservations\models.py:120 .\src\apps\reservations\models.py:121
-#: .\src\apps\reservations\models.py:147
+#: .\src\apps\reservations\models.py:122 .\src\apps\reservations\models.py:123
+#: .\src\apps\reservations\models.py:149
+#: .\src\templates\cotton\components\card_ticket.html:25
 msgid "Luggage"
 msgstr ""
 
-#: .\src\apps\reservations\models.py:152 .\src\apps\reservations\models.py:153
+#: .\src\apps\reservations\models.py:154 .\src\apps\reservations\models.py:155
 msgid "Travel"
 msgstr ""
 
-#: .\src\config\settings.py:162
+#: .\src\apps\reservations\views.py:179
+msgid "EDR Reservation Notice – Payment pending"
+msgstr ""
+
+#: .\src\config\settings.py:164
 msgid "English"
 msgstr ""
 
-#: .\src\config\settings.py:163
+#: .\src\config\settings.py:165
 msgid "French"
+msgstr ""
+
+#: .\src\templates\cotton\components\card_ticket.html:10
+msgid "From:"
+msgstr ""
+
+#: .\src\templates\cotton\components\card_ticket.html:14
+msgid "To:"
 msgstr ""
 
 #: .\src\templates\cotton\components\home_carousel.html:14
@@ -562,11 +588,104 @@ msgstr ""
 msgid "Luggages"
 msgstr ""
 
+#: .\src\templates\mail\reservation_notice.html:3
+#: .\src\templates\mail\reservation_notice.txt:3
+msgid "Hello"
+msgstr ""
+
+#: .\src\templates\mail\reservation_notice.html:6
+#: .\src\templates\mail\reservation_notice.txt:5
+#: .\src\templates\pages\reservation_done.html:9
+msgid "Thank you for your reservation with"
+msgstr ""
+
+#: .\src\templates\mail\reservation_notice.html:7
+#: .\src\templates\mail\reservation_notice.txt:6
+#: .\src\templates\pages\reservation_done.html:13
+msgid "Your reservation has been received and the reservation notice"
+msgstr ""
+
+#: .\src\templates\mail\reservation_notice.html:8
+#: .\src\templates\mail\reservation_notice.txt:7
+#: .\src\templates\pages\reservation_done.html:14
+msgid "No."
+msgstr ""
+
+#: .\src\templates\mail\reservation_notice.html:9
+#: .\src\templates\mail\reservation_notice.txt:8
+msgid "is attached to this email."
+msgstr ""
+
+#: .\src\templates\mail\reservation_notice.html:13
+#: .\src\templates\mail\reservation_notice.txt:10
+#: .\src\templates\pages\reservation_done.html:18
+msgid ""
+"Please note that you must complete the payment within 3 hours, otherwise "
+"your reservation will be automatically cancelled."
+msgstr ""
+
+#: .\src\templates\mail\reservation_notice.html:17
+#: .\src\templates\mail\reservation_notice.txt:12
+msgid "If you did not make this reservation, please ignore this message."
+msgstr ""
+
+#: .\src\templates\mail\reservation_notice.html:21
+#: .\src\templates\mail\reservation_notice.txt:14
+msgid "Best regards"
+msgstr ""
+
+#: .\src\templates\mail\reservation_notice.html:22
+#: .\src\templates\mail\reservation_notice.txt:15
+msgid "The EDR Team"
+msgstr ""
+
+#: .\src\templates\pages\confirm_reservation.html:4
 #: .\src\templates\pages\home.html:4
 #: .\src\templates\pages\payment_method.html:4
 #: .\src\templates\pages\reservation.html:4
+#: .\src\templates\pages\reservation_done.html:4
 #: .\src\templates\reservation\index.html:4
 msgid "Fast & Easy Train Travel"
+msgstr ""
+
+#: .\src\templates\pages\confirm_reservation.html:19
+msgid "Summary of your booking"
+msgstr ""
+
+#: .\src\templates\pages\confirm_reservation.html:27
+msgid "Departure Ticket"
+msgstr ""
+
+#: .\src\templates\pages\confirm_reservation.html:38
+msgid "Return Ticket"
+msgstr ""
+
+#: .\src\templates\pages\confirm_reservation.html:50
+#: .\src\templates\pdf\reservation_notice.html:122
+msgid "Passenger Information"
+msgstr ""
+
+#: .\src\templates\pages\confirm_reservation.html:61
+msgid "Email address"
+msgstr ""
+
+#: .\src\templates\pages\confirm_reservation.html:93
+msgid "Payment Summary"
+msgstr ""
+
+#: .\src\templates\pages\confirm_reservation.html:100
+msgid "Payment method:"
+msgstr ""
+
+#: .\src\templates\pages\confirm_reservation.html:109
+#: .\src\templates\pages\payment_method.html:43
+#: .\src\templates\pages\reservation.html:19
+#: .\src\templates\reservation\index.html:19
+msgid "Back"
+msgstr ""
+
+#: .\src\templates\pages\confirm_reservation.html:112
+msgid "Confirm Reservation"
 msgstr ""
 
 #: .\src\templates\pages\home.html:15
@@ -586,6 +705,7 @@ msgid "Djibouti ↔ Dire Dawa"
 msgstr ""
 
 #: .\src\templates\pages\home.html:43 .\src\templates\pages\home.html:58
+#: .\src\templates\pdf\reservation_notice.html:104
 msgid "From"
 msgstr ""
 
@@ -666,14 +786,61 @@ msgstr ""
 msgid "How would you like to pay?"
 msgstr ""
 
-#: .\src\templates\pages\payment_method.html:43
-#: .\src\templates\pages\reservation.html:19
-#: .\src\templates\reservation\index.html:19
-msgid "Back"
-msgstr ""
-
 #: .\src\templates\pages\payment_method.html:45
 #: .\src\templates\pages\reservation.html:21
 #: .\src\templates\reservation\index.html:21
 msgid "Next"
+msgstr ""
+
+#: .\src\templates\pdf\reservation_notice.html:7
+#: .\src\templates\pdf\reservation_notice.html:91
+msgid "Reservation Notice"
+msgstr ""
+
+#: .\src\templates\pdf\reservation_notice.html:93
+msgid "Notice Number"
+msgstr ""
+
+#: .\src\templates\pdf\reservation_notice.html:96
+msgid "Date"
+msgstr ""
+
+#: .\src\templates\pdf\reservation_notice.html:102
+msgid "Reservation Details"
+msgstr ""
+
+#: .\src\templates\pdf\reservation_notice.html:108
+msgid "To"
+msgstr ""
+
+#: .\src\templates\pdf\reservation_notice.html:111
+msgid "Departure Date"
+msgstr ""
+
+#: .\src\templates\pdf\reservation_notice.html:115
+msgid "Return Date"
+msgstr ""
+
+#: .\src\templates\pdf\reservation_notice.html:127
+msgid "Email:"
+msgstr ""
+
+#: .\src\templates\pdf\reservation_notice.html:130
+msgid "Téléphne:"
+msgstr ""
+
+#: .\src\templates\pdf\reservation_notice.html:136
+msgid "Amount payable"
+msgstr ""
+
+#: .\src\templates\pdf\reservation_notice.html:138
+msgid "Payment Method"
+msgstr ""
+
+#: .\src\templates\pdf\reservation_notice.html:146
+msgid "Please present this notice along with an ID when boarding."
+msgstr ""
+
+#: .\src\templates\pdf\reservation_notice.html:149
+msgid "Thank you for your reservation!"
 msgstr ""
