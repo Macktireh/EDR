@@ -167,6 +167,7 @@ class ConfirmReservationView(View):
                 # Lier le passenger à la réservation
                 reservation.passengers.add(passenger)
                 reservation_notice = ReservationNotice.objects.create(reservation=reservation)
+                data["payment_method"] = Payment.PaymentMethod(data["payment_method"]).label
                 context = {
                     "reservation": data,
                     "reservation_notice": reservation_notice,

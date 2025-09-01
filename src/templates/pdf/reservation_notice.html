@@ -135,7 +135,7 @@
       <div class="info-box payment">
         <h3 class="info-title">{% translate "Amount payable" %}</h3>
         <p class="info-item">
-          {% translate "Payment Method" %}: {{ reservation.payment.get_method_display }}
+          {% translate "Payment Method" %}: {{ reservation.payment_method }}
         </p>
         <p class="info-item amount">{{ reservation.total_amount }} DJF</p>
       </div>
