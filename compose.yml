@@ -18,19 +18,20 @@ services:
       - ./.env
     command: /start
     depends_on:
+      - postgres
       - mailpit
 
-  # postgres:
-  #   image: postgres:16-alpine
-  #   container_name: edr_local_postgres
-  #   ports:
-  #     - 5432:5432
-  #   volumes:
-  #     - edr_local_db_data:/var/lib/postgresql/data
-  #   environment:
-  #     - "POSTGRES_USER=${DB_USER}"
-  #     - "POSTGRES_PASSWORD=${DB_PASSWORD}"
-  #     - "POSTGRES_DB=${DB_NAME}"
+  postgres:
+    image: postgres:16-alpine
+    container_name: edr_local_postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - edr_local_db_data:/var/lib/postgresql/data
+    environment:
+      - "POSTGRES_USER=${DB_USER}"
+      - "POSTGRES_PASSWORD=${DB_PASSWORD}"
+      - "POSTGRES_DB=${DB_NAME}"
 
   mailpit:
     image: docker.io/axllent/mailpit:latest

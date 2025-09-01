@@ -118,12 +118,24 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR.parent / "db.sqlite3",
+if env.str("DB_CONNECTION") != "sqlite":
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": env("DB_NAME"),
+            "USER": env("DB_USER"),
+            "PASSWORD": env("DB_PASSWORD"),
+            "HOST": env("DB_HOST"),
+            "PORT": env("DB_PORT"),
+        },
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR.parent / "db.sqlite3",
+        }
+    }
 
 
 # Password validation
@@ -192,7 +204,8 @@ AUTH_USER_MODEL = "accounts.User"
 
 # Email
 EMAIL_BACKEND = env.str(
-    "DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.smtp.EmailBackend" # type: ignore
+    "DJANGO_EMAIL_BACKEND",
+    default="django.core.mail.backends.smtp.EmailBackend",  # type: ignore
 )
-EMAIL_HOST = env.str("EMAIL_HOST", default="mailpit") # type: ignore
+EMAIL_HOST = env.str("EMAIL_HOST", default="mailpit")  # type: ignore
 EMAIL_PORT = 1025
