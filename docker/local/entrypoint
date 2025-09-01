@@ -34,7 +34,10 @@ try:
             print("✅ PostgreSQL is ready, but uses the default SQLite database.")
         except:
             print("✅ Using default database sqllite")
-except psycopg.OperationalError:
+except psycopg.OperationalError as e:
+    print()
+    print(e)
+    print()
     sys.exit(-1)
 sys.exit(0)
 END_PYTHON
